@@ -1,22 +1,31 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { QrCode, AlertCircle, Home } from 'lucide-react';
+import './WearerInterface.css';
 
 const WearerInterface = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="wearer-dashboard-wrap" style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '20px', alignItems: 'center', justifyContent: 'center' }}>
-      <button onClick={() => navigate('/')} style={{ position: 'absolute', top: '20px', left: '20px', background: 'var(--color-slate)', padding: '10px 15px', borderRadius: '8px' }}>Home</button>
+    <div className="wearer-dashboard-wrap">
+      <button className="wearer-nav-home" onClick={() => navigate('/')}>
+        <Home size={18} />
+      </button>
       
-      <h2 style={{ color: 'var(--color-red-dark)' }}>Emergency QR</h2>
-      <p style={{ textAlign: 'center', color: 'var(--color-slate)' }}>Scan to view vital medical information and emergency contacts.</p>
-      
-      <div style={{ width: '250px', height: '250px', background: 'var(--color-gray)', marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '15px' }}>
-        <span>[QR Code Placeholder]</span>
+      <div className="qr-section">
+        <h2 className="qr-title">Emergency QR</h2>
+        <p className="qr-description">
+          Scan this code to access medical profile and emergency contacts.
+        </p>
+        
+        <div className="qr-box">
+          <QrCode size={160} color="var(--color-slate)" strokeWidth={1} />
+        </div>
       </div>
 
-      <button className="wearer-alert-btn" style={{ background: 'var(--color-red-light)', padding: '15px 30px', borderRadius: '30px', marginTop: '40px', fontSize: '18px', fontWeight: 'bold' }}>
-        EMERGENCY SOS
+      <button className="sos-trigger" onClick={() => alert('SOS Alert Sent to Guardians!')}>
+        <AlertCircle size={32} />
+        <span>SOS</span>
       </button>
     </div>
   );
