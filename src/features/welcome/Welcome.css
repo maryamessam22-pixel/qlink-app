@@ -1,0 +1,105 @@
+.qlink-welcome-portal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.qlink-welcome-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.qlink-welcome-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-top: 10px;
+}
+
+.qlink-welcome-subtitle {
+  font-size: 14px;
+  color: var(--color-slate);
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.qlink-role-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.qlink-role-option-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.qlink-role-option-card:active {
+  transform: scale(0.98);
+}
+
+.qlink-role-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.qlink-role-icon-box.guardian {
+  background: rgba(0, 102, 204, 0.1);
+  color: var(--color-primary);
+}
+
+.qlink-role-icon-box.wearer {
+  background: rgba(135, 115, 236, 0.1);
+  color: var(--color-purple-1);
+}
+
+.qlink-role-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 8px;
+}
+
+.qlink-role-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 240px;
+}
+
+.qlink-role-action-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-guardian {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-wearer {
+  background: var(--color-primary-dark);
+  color: white;
+}
