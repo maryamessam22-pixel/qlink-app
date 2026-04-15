@@ -5,6 +5,8 @@ import GuardianLogin from './features/auth/GuardianLogin';
 import WearerInterface from './features/wearer/WearerInterface';
 import './index.css';
 
+import LanguageSwitcher from './components/LanguageSwitcher';
+
 const App = () => {
   const [language, setLanguage] = useState('en');
 
@@ -19,15 +21,7 @@ const App = () => {
 
   return (
     <div className="mobile-app-wrapper">
-      {/* Global Header or Language Switcher for demonstration */}
-      <div style={{ position: 'absolute', top: 10, right: 10, zIndex: 1000 }}>
-        <button 
-          onClick={toggleLanguage} 
-          style={{ padding: '5px 10px', borderRadius: '5px', fontSize: '12px', background: 'var(--color-slate)' }}
-        >
-          {language === 'en' ? 'عربي' : 'EN'}
-        </button>
-      </div>
+      <LanguageSwitcher currentLang={language} onToggle={toggleLanguage} />
 
       <Router>
         <Routes>
