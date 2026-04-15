@@ -6,10 +6,12 @@ import GuardianDashboard from './features/guardian/GuardianDashboard';
 import WearerInterface from './features/wearer/WearerInterface';
 import './index.css';
 
+import SplashScreen from './features/welcome/SplashScreen';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 const App = () => {
   const [language, setLanguage] = useState('en');
+  const [showSplash, setShowSplash] = useState(true);
 
   // i18n & Dual Language Logic (English / Arabic)
   useEffect(() => {
@@ -19,6 +21,10 @@ const App = () => {
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));
   };
+
+  if (showSplash) {
+    return <SplashScreen onLoadingComplete={() => setShowSplash(false)} />;
+  }
 
   return (
     <div className="mobile-app-wrapper">
