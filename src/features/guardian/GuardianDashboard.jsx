@@ -1,11 +1,19 @@
-import React from 'react';
+import { MapPin, Clock, Plus, Settings, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './GuardianDashboard.css';
 
 const GuardianDashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="guardian-dashboard-wrap">
       <header className="guardian-dash-header">
-        <h1 className="guardian-dash-title">My Wearers</h1>
+        <div className="guardian-header-top">
+          <h1 className="guardian-dash-title">My Wearers</h1>
+          <button className="guardian-logout-btn" onClick={() => navigate('/')}>
+            <LogOut size={18} />
+          </button>
+        </div>
       </header>
       
       <div className="guardian-dash-content">
@@ -15,12 +23,18 @@ const GuardianDashboard = () => {
             <span className="wearer-status">Active</span>
           </div>
           <div className="wearer-card-meta">
-            Last seen 5m ago near Heliopolis
+            <div className="meta-item">
+              <Clock size={14} /> <span>Last seen 5m ago</span>
+            </div>
+            <div className="meta-item">
+              <MapPin size={14} /> <span>Heliopolis, Cairo</span>
+            </div>
           </div>
         </div>
         
         <button className="guardian-add-btn">
-          + Add New Wearer
+          <Plus size={20} />
+          <span>Add New Wearer</span>
         </button>
       </div>
     </div>
