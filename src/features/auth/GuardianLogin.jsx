@@ -84,6 +84,7 @@ const GuardianLogin = () => {
 
       <div className="auth-social-nexus">
         <button className="auth-social-btn"><Globe size={20} /></button>
+        <button className="auth-social-btn"><Globe size={20} /></button>
         <button className="auth-social-btn"><Apple size={20} /></button>
       </div>
 
