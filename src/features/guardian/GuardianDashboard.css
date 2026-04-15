@@ -1,0 +1,71 @@
+.guardian-dashboard-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #F8FAFC;
+  padding: 24px;
+}
+
+.guardian-dash-header {
+  margin-bottom: 24px;
+  padding-top: 20px;
+}
+
+.guardian-dash-title {
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}
+
+.guardian-dash-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guardian-wearer-card {
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.wearer-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wearer-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-slate);
+}
+
+.wearer-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: #E0F2FE;
+  color: #0369A1;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.wearer-card-meta {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.guardian-add-btn {
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--color-white);
+  border: 2px dashed var(--color-gray);
+  color: var(--color-slate);
+  cursor: pointer;
+}
