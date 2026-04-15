@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Shield, UserRound } from 'lucide-react';
 import './Welcome.css';
 
 const Welcome = () => {
@@ -19,6 +20,7 @@ const Welcome = () => {
           className="welcome-role-btn welcome-guardian-trigger" 
           onClick={() => navigate('/login')}
         >
+          <Shield size={20} className="role-btn-icon" />
           Guardian Portal
         </button>
         
@@ -26,6 +28,7 @@ const Welcome = () => {
           className="welcome-role-btn welcome-wearer-trigger"
           onClick={() => navigate('/wearer')}
         >
+          <UserRound size={20} className="role-btn-icon" />
           Wearer Interface
         </button>
       </div>
