@@ -1,0 +1,156 @@
+.qlink-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #FDFDFD;
+  padding: 30px 20px;
+  overflow-y: auto;
+}
+
+.qlink-dash-header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.qlink-dash-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.qlink-dash-greeting {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.qlink-dash-date {
+  font-size: 13px;
+  color: var(--color-gray);
+  font-weight: 500;
+}
+
+.qlink-dash-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--gradient-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+}
+
+.qlink-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.qlink-stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+}
+
+.qlink-stat-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.qlink-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-slate);
+  opacity: 0.6;
+}
+
+.qlink-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qlink-wearer-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qlink-wearer-entry {
+  background: white;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.qlink-wearer-entry:active {
+  background: #f8fafc;
+}
+
+.qlink-entry-img {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.qlink-entry-info {
+  flex: 1;
+}
+
+.qlink-entry-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-slate);
+}
+
+.qlink-entry-loc {
+  font-size: 12px;
+  color: var(--color-gray);
+  margin-top: 2px;
+}
+
+.qlink-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.qlink-fab-add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: var(--color-primary-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(39, 52, 105, 0.4);
+  cursor: pointer;
+  z-index: 100;
+}
