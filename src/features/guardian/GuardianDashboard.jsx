@@ -1,12 +1,13 @@
-import React from 'react';
-import { User, Activity, MapPin, Plus, Bell, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { User, Activity, MapPin, Plus, Bell, ChevronRight, X, Smartphone } from 'lucide-react';
 import './GuardianDashboard.css';
 
 const GuardianDashboard = () => {
-  const wearers = [
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [wearers, setWearers] = useState([
     { id: 1, name: 'Ahmed Essam', location: 'Heliopolis, Cairo', status: 'Active' },
     { id: 2, name: 'Sami Mansour', location: 'Maadi, Cairo', status: 'Active' }
-  ];
+  ]);
 
   return (
     <div className="qlink-dashboard-container">
@@ -22,7 +23,7 @@ const GuardianDashboard = () => {
 
       <div className="qlink-stat-grid">
         <div className="qlink-stat-card">
-          <div className="qlink-stat-val">2</div>
+          <div className="qlink-stat-val">{wearers.length}</div>
           <div className="qlink-stat-label">Active Wearers</div>
         </div>
         <div className="qlink-stat-card">
@@ -55,19 +56,34 @@ const GuardianDashboard = () => {
         </div>
       </section>
 
-      <button className="qlink-fab-add">
+      <button className="qlink-fab-add" onClick={() => setShowAddModal(true)}>
         <Plus size={28} />
       </button>
 
-      {/* Background Tab Bar Simulation for Mobile Feel */}
-      <div style={{ marginTop: 'auto', paddingTop: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid #f1f5f9', padding: '15px 0' }}>
-          <Activity size={20} color="var(--color-primary)" />
-          <MapPin size={20} color="#94A3B8" />
-          <Bell size={20} color="#94A3B8" />
-          <Settings size={20} color="#94A3B8" />
+      {/* Add Wearer Modal */}
+      {showAddModal && (
+        <div className="qlink-modal-overlay">
+          <div className="qlink-modal-content slide-up">
+            <header className="qlink-modal-header">
+              <h3 className="qlink-modal-title">Link New Bracelet</h3>
+              <button className="qlink-modal-close" onClick={() => setShowAddModal(false)}>
+                <X size={24} />
+              </button>
+            </header>
+            
+            <div className="qlink-modal-body">
+              <div className="qlink-link-instruction">
+                <div className="qlink-instr-icon"><Smartphone size={24} /></div>
+                <p>Scan the QR code on the back of the Qlink bracelet to pair it with your hub.</p>
+              </div>
+              
+              <button className="qlink-primary-action-btn" style={{ background: 'var(--color-primary-dark)', padding: '16px', borderRadius: '14px', width: '100%', color: 'white', fontWeight: 'bold' }}>
+                Open Camera Scanner
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
