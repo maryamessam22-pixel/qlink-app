@@ -1,25 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './GuardianLogin.css';
 
 const GuardianLogin = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Logic for Supabase auth will go here later
+    console.log('Logging in with:', formData);
+    navigate('/guardian/dashboard');
+  };
 
   return (
-    <div className="auth-login-wrap" style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'var(--gradient-auth-bg)', color: 'var(--color-white)', padding: '20px' }}>
-      <button onClick={() => navigate('/')} style={{ background: 'transparent', width: 'fit-content', padding: '10px 0', textAlign: 'left' }}>← Back</button>
+    <div className="auth-login-wrap">
+      <button className="auth-back-btn" onClick={() => navigate('/')} aria-label="Go back">
+        ←
+      </button>
       
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <h2>Guardian Guardian</h2>
-        <p>Login to your account to monitor your wearer.</p>
+      <div className="auth-form-container">
+        <h2 className="auth-title">Guardian Login</h2>
+        <p className="auth-subtitle">Welcome back! Please enter your details.</p>
         
-        <form style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '20px' }} onSubmit={(e) => { e.preventDefault(); navigate('/guardian/dashboard'); }}>
-          <input type="email" placeholder="Email Address" style={{ padding: '12px', borderRadius: '8px', border: 'none' }} required />
-          <input type="password" placeholder="Password" style={{ padding: '12px', borderRadius: '8px', border: 'none' }} required />
+        <form className="auth-login-form" onSubmit={handleSubmit}>
+          <div className="auth-input-group">
+            <input 
+              className="auth-input"
+              type="email" 
+              name="email"
+              placeholder="Email Address" 
+              value={formData.email}
+              onChange={handleChange}
+              required 
+            />
+          </div>
           
-          <button type="submit" className="auth-login-submit" style={{ padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
-            Login
+          <div className="auth-input-group">
+            <input 
+              className="auth-input"
+              type="password" 
+              name="password"
+              placeholder="Password" 
+              value={formData.password}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+          
+          <button type="submit" className="auth-login-submit">
+            Sign In
           </button>
         </form>
+
+        <div className="auth-footer">
+          Don't have an account? <span className="auth-link">Sign up</span>
+        </div>
       </div>
     </div>
   );
