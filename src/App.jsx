@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './features/welcome/Welcome';
 import GuardianLogin from './features/auth/GuardianLogin';
+import GuardianSignup from './features/auth/GuardianSignup';
 import GuardianDashboard from './features/guardian/GuardianDashboard';
 import WearerInterface from './features/wearer/WearerInterface';
 import './index.css';
@@ -34,6 +35,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<GuardianLogin />} />
+          <Route path="/signup" element={<GuardianSignup />} />
           <Route path="/guardian/dashboard" element={<GuardianDashboard />} />
           <Route path="/wearer" element={<WearerInterface />} />
         </Routes>
