@@ -1,20 +1,24 @@
 import React from 'react';
+import logoImg from '../assets/logo.png';
 
 const QlinkLogo = ({ variant = 'dark', size = 'medium' }) => {
-  const color = variant === 'light' ? 'var(--color-white)' : 'var(--color-primary-dark)';
-  const fontSize = size === 'large' ? '48px' : size === 'medium' ? '32px' : '24px';
-
+  const width = size === 'large' ? '180px' : size === 'medium' ? '120px' : '80px';
+  
   return (
     <div className="qlink-brand-identity" style={{ 
-      fontFamily: 'var(--font-secondary)', 
-      fontWeight: 'bold', 
-      fontSize: fontSize, 
-      color: color,
       display: 'flex',
-      alignItems: 'baseline',
-      gap: '2px'
+      alignItems: 'center',
+      justifyContent: 'center'
     }}>
-      Q<span style={{ color: variant === 'light' ? 'var(--color-white)' : 'var(--color-primary)' }}>link</span>
+      <img 
+        src={logoImg} 
+        alt="Qlink Pro" 
+        style={{ 
+          width: width,
+          height: 'auto',
+          filter: variant === 'light' ? 'brightness(0) invert(1)' : 'none'
+        }} 
+      />
     </div>
   );
 };
