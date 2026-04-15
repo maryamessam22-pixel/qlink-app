@@ -1,32 +1,46 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QrCode, AlertCircle, Home } from 'lucide-react';
+import { QrCode, AlertCircle, Home, Settings } from 'lucide-react';
 import './WearerInterface.css';
 
 const WearerInterface = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="wearer-dashboard-wrap">
-      <button className="wearer-nav-home" onClick={() => navigate('/')}>
-        <Home size={18} />
-      </button>
+    <div className="qlink-wearer-nexus">
+      <div className="qlink-wearer-top-bar">
+        <button className="qlink-nav-circular-btn" onClick={() => navigate('/')}>
+          <Home size={20} />
+        </button>
+        <button className="qlink-nav-circular-btn">
+          <Settings size={20} />
+        </button>
+      </div>
       
-      <div className="qr-section">
-        <h2 className="qr-title">Emergency QR</h2>
-        <p className="qr-description">
-          Scan this code to access medical profile and emergency contacts.
-        </p>
-        
-        <div className="qr-box">
-          <QrCode size={160} color="var(--color-slate)" strokeWidth={1} />
+      <div className="qlink-qr-vault-section">
+        <header className="qlink-qr-info">
+          <h2 className="qlink-qr-header">Emergency Identity</h2>
+          <p className="qlink-qr-tagline">
+            Guardians and medical staff can scan this to see your vitals.
+          </p>
+        </header>
+
+        <div className="qlink-qr-frame">
+          <QrCode size={180} strokeWidth={1} color="var(--color-primary-dark)" />
         </div>
       </div>
 
-      <button className="sos-trigger" onClick={() => alert('SOS Alert Sent to Guardians!')}>
-        <AlertCircle size={32} />
-        <span>SOS</span>
-      </button>
+      <div className="qlink-sos-nexus">
+        <div className="qlink-sos-trigger-ring">
+          <div className="qlink-sos-ripple"></div>
+          <div className="qlink-sos-ripple"></div>
+          <button className="qlink-sos-primary-btn" onClick={() => alert('SOS Alert Transmitted!')}>
+            <AlertCircle size={32} />
+            <span>SOS</span>
+          </button>
+        </div>
+        <p className="qlink-wearer-footer">Tap and hold for 3 seconds to cancel alert</p>
+      </div>
     </div>
   );
 };

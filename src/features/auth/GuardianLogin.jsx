@@ -7,6 +7,7 @@ import './GuardianLogin.css';
 const GuardianLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleInputChange = (e) => {
@@ -16,8 +17,12 @@ const GuardianLogin = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Logic for auth simulation
-    navigate('/guardian/dashboard');
+    setIsLoading(true);
+    // simulated authentication delay
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/guardian/dashboard');
+    }, 1500);
   };
 
   return (
@@ -66,8 +71,8 @@ const GuardianLogin = () => {
           <span className="auth-aux-link">Forgot Password?</span>
         </div>
         
-        <button type="submit" className="auth-primary-action-btn">
-          Sign In
+        <button type="submit" className="auth-primary-action-btn" disabled={isLoading}>
+          {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
 
