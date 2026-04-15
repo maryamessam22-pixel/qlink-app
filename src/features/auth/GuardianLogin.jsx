@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, Facebook, Globe, Apple, AlertCircle } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, FacebookIcon, Globe, Apple, AlertCircle } from 'lucide-react';
 import QlinkLogo from '../../components/QlinkLogo';
 import './GuardianLogin.css';
 
@@ -83,7 +83,7 @@ const GuardianLogin = () => {
       </div>
 
       <div className="auth-social-nexus">
-        <button className="auth-social-btn"><Facebook size={20} /></button>
+        <button className="auth-social-btn"><FacebookIcon size={20} /></button>
         <button className="auth-social-btn"><Globe size={20} /></button>
         <button className="auth-social-btn"><Apple size={20} /></button>
       </div>
