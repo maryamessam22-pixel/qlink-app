@@ -4,7 +4,7 @@
   padding: 32px 24px 34px;
   box-sizing: border-box;
   color: #ffffff;
-  background: linear-gradient(180deg, #d40418 0%, #0058bf 72%, #00408e 100%);
+  background: var(--gradient-auth-bg);
   display: flex;
   flex-direction: column;
   position: relative;

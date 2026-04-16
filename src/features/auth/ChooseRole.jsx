@@ -20,25 +20,30 @@ const ChooseRole = () => {
     // Simulate brief processing before transition
     setTimeout(() => {
       navigate('/signup', { state: { role } });
-    }, 1500);
+    }, 2000);
   };
 
   return (
     <>
-      {/* ── Loading Overlay (triggers on click) ──────────────────────── */}
+      {/* ── Premium Loading Screen (triggers on click) ──────────────────────── */}
       {isLoading && (
         <div className="choose-role-loading-overlay transition-fade-in">
-          <div className="choose-role-loader-logo">
+          <div className="choose-role-loader-content">
             <QlinkLogo variant="light" size="large" />
+            <p className="choose-role-loader-tagline">Smart Safety <br /> Ecosystem</p>
+            
+            <div className="choose-role-loader-wrap">
+              <div className="choose-role-spinner"></div>
+            </div>
           </div>
-          <div className="choose-role-spinner-ring">
-            <div className="choose-role-spinner-arc" />
-          </div>
-          <p className="choose-role-loader-hint">Setting up your profile…</p>
+          
+          {/* Decorative blurred blobs for that mesh vibe */}
+          <div className="role-loader-blob blob-1"></div>
+          <div className="role-loader-blob blob-2"></div>
         </div>
       )}
 
-      {/* ── Main screen ─────────────────────────────────── */}
+      {/* ── Main Choose Role Screen ─────────────────────────────────── */}
       <div className={`choose-role-screen ${isVisible ? 'content-visible' : 'content-hidden'}`}>
         <header className="role-header">
           <QlinkLogo variant="light" size="large" />
@@ -65,7 +70,7 @@ const ChooseRole = () => {
           </div>
 
           {/* Wearer card */}
-          <div className="role-card card-slide-up" style={{ animationDelay: '0.25s' }}>
+          <div className="role-card card-slide-up" style={{ animationDelay: '0.2s' }}>
             <div className="role-icon-box wearer-icon-box">
               <User size={32} color="#7f39fb" />
             </div>

@@ -22,7 +22,7 @@
 
   /* Gradients */
   --gradient-btn: linear-gradient(to right, #273469, #0066CC);
-  --gradient-auth-bg: linear-gradient(to bottom, #0045B5, #E80000);
+  --gradient-auth-bg: linear-gradient(180deg, #CE2222 0%, #3D5099 45%, #0066CC 100%);
 }
 
 body {
