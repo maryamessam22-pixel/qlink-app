@@ -1,158 +1,147 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { User, Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import QlinkLogo from '../../components/QlinkLogo';
+import appleIcon from '../../assets/icons/apple.png';
+import facebookIcon from '../../assets/icons/fb.png';
+import googleIcon from '../../assets/icons/google.png';
 import './CreateAccount.css';
 
 const CreateAccount = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState('guardian'); // Default
-  const [isCreatingHub, setIsCreatingHub] = useState(false);
-  const [formData, setFormData] = useState({ fullName: '', email: '', password: '' });
+  const [selectedRole, setSelectedRole] = useState('guardian');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+  });
 
   useEffect(() => {
-    if (location.state && location.state.role) {
-      setRole(location.state.role);
+    if (location.state?.role) {
+      setSelectedRole(location.state.role);
     }
   }, [location.state]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((previous) => ({ ...previous, [name]: value }));
   };
 
-  const handleSignupSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    if (role !== 'guardian') {
+    if (selectedRole !== 'guardian') {
       navigate('/wearer');
       return;
     }
 
-    setIsCreatingHub(true);
-    // Simulated network request (UX requirement)
+    setIsSubmitting(true);
     setTimeout(() => {
       navigate('/guardian-dashboard');
     }, 1500);
   };
 
   return (
-    <div className="create-account-screen">
-      <button className="back-button" onClick={() => navigate(-1)}>
+    <div className="create-account-page">
+      <button type="button" className="create-account-back" onClick={() => navigate(-1)}>
         <ArrowLeft size={18} />
         <span>Back</span>
       </button>
 
-      <header className="create-account-header">
+      <header className="create-account-hero">
         <QlinkLogo variant="light" size="large" />
-        <h2 className="create-account-title">Create Account</h2>
-        <p className="create-account-subtitle">Starts your safety journey</p>
+        <h1 className="create-account-heading">Create Account</h1>
+        <p className="create-account-text">Starts your safety journey</p>
       </header>
 
-      <form className="create-account-form" onSubmit={handleSignupSubmit}>
-        <div className="form-field">
-          <User className="field-icon" size={20} />
-          <input 
-            className="text-input"
-            type="text" 
-            name="fullName"
-            placeholder="Mariam Essam" 
-            value={formData.fullName}
-            onChange={handleInputChange}
-            required 
-          />
-        </div>
+      <form className="create-account-form" onSubmit={handleSubmit}>
+        <input
+          className="create-account-input"
+          type="text"
+          name="fullName"
+          placeholder="Mariam Essam"
+          value={formValues.fullName}
+          onChange={handleChange}
+          required
+        />
 
-        <div className="form-field">
-          <Mail className="field-icon" size={20} />
-          <input 
-            className="text-input"
-            type="email" 
-            name="email"
-            placeholder="maryamessam@gmail.com" 
-            value={formData.email}
-            onChange={handleInputChange}
-            required 
-          />
-        </div>
-        
-        <div className="form-field">
-          <Lock className="field-icon" size={20} />
-          <input 
-            className="text-input"
-            type={showPassword ? "text" : "password"} 
+        <input
+          className="create-account-input"
+          type="email"
+          name="email"
+          placeholder="maryamessam@gmail.com"
+          value={formValues.email}
+          onChange={handleChange}
+          required
+        />
+
+        <div className="create-account-password-wrap">
+          <input
+            className="create-account-input create-account-password-input"
+            type={showPassword ? 'text' : 'password'}
             name="password"
-            placeholder="**********" 
-            value={formData.password}
-            onChange={handleInputChange}
-            required 
+            placeholder="**********"
+            value={formValues.password}
+            onChange={handleChange}
+            required
           />
-          <button 
+          <button
             type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
+            className="create-account-eye"
+            onClick={() => setShowPassword((previous) => !previous)}
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
 
-        <div className="interface-select">
-          <p className="interface-select-label">Choose interface</p>
-          <div className="role-toggle">
-          <button 
+        <div className="create-account-role-toggle">
+          <button
             type="button"
-            className={`role-toggle-button ${role === 'guardian' ? 'active' : ''}`}
-            onClick={() => setRole('guardian')}
+            className={`create-account-role-button ${selectedRole === 'guardian' ? 'is-active' : ''}`}
+            onClick={() => setSelectedRole('guardian')}
           >
             Guardian
           </button>
-          <button 
+          <button
             type="button"
-            className={`role-toggle-button ${role === 'wearer' ? 'active' : ''}`}
-            onClick={() => setRole('wearer')}
+            className={`create-account-role-button ${selectedRole === 'wearer' ? 'is-active' : ''}`}
+            onClick={() => setSelectedRole('wearer')}
           >
             Wearer
           </button>
-          </div>
         </div>
-        
-        <button
-          type="submit"
-          className="create-account-submit"
-          disabled={isCreatingHub}
-        >
-          {isCreatingHub ? (
-            <>
-              <span className="create-account-loading-spinner" />
-              Creating Hub...
-            </>
-          ) : role === 'guardian' ? (
-            'Create a Guardian Hub'
-          ) : (
-            'Create Wearer Profile'
-          )}
+
+        <button type="submit" className="create-account-submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Creating Hub...' : 'Create a guardian Hub'}
         </button>
       </form>
 
-      <div className="signup-divider">
-        <div className="signup-divider-line"></div>
-        <span className="signup-divider-text">OR</span>
-        <div className="signup-divider-line"></div>
+      <div className="create-account-divider">
+        <span className="create-account-divider-line"></span>
+        <span className="create-account-divider-word">OR</span>
+        <span className="create-account-divider-line"></span>
       </div>
 
-      <div className="social-login-buttons">
-        <button className="social-button social-facebook" type="button">f</button>
-        <button className="social-button social-google" type="button">G</button>
-        <button className="social-button social-apple" type="button"></button>
+      <div className="create-account-socials">
+        <button type="button" className="create-account-social create-account-social-facebook" aria-label="Continue with Facebook">
+          <img className="create-account-social-icon" src={facebookIcon} alt="" />
+        </button>
+        <button type="button" className="create-account-social create-account-social-google" aria-label="Continue with Google">
+          <img className="create-account-social-icon" src={googleIcon} alt="" />
+        </button>
+        <button type="button" className="create-account-social create-account-social-apple" aria-label="Continue with Apple">
+          <img className="create-account-social-icon" src={appleIcon} alt="" />
+        </button>
       </div>
 
-      <footer className="signup-footer">
-        Already have an account? 
-        <span className="login-link" onClick={() => navigate('/login')}>
-          <strong> Sign In</strong>
-        </span>
+      <footer className="create-account-footer">
+        Already have an account ?
+        <button type="button" className="create-account-link" onClick={() => navigate('/login')}>
+          Sign In
+        </button>
       </footer>
     </div>
   );

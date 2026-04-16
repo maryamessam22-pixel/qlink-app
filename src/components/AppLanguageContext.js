@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 const AppLanguageContext = createContext({
-  language: 'ar',
+  language: 'en',
   toggleLanguage: () => {},
 });
 

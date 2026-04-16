@@ -1,106 +1,125 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, Globe, Apple, AlertCircle } from 'lucide-react';
+import { ArrowLeft, CircleAlert, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import QlinkLogo from '../../components/QlinkLogo';
+import appleIcon from '../../assets/icons/apple.png';
+import facebookIcon from '../../assets/icons/fb.png';
+import googleIcon from '../../assets/icons/google.png';
 import './GuardianLogin.css';
 
 const GuardianLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [loginValues, setLoginValues] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setLoginValues((previous) => ({ ...previous, [name]: value }));
   };
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // brief timeout to simulate loading
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate('/guardian-dashboard');
-    }, 1500);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate('/guardian-dashboard');
   };
 
   return (
-    <div className="login-screen">
-      <header className="login-header">
+    <div className="guardian-login-page">
+      <button type="button" className="guardian-login-back" onClick={() => navigate('/')}>
+        <ArrowLeft size={18} />
+        <span>Back</span>
+      </button>
+
+      <header className="guardian-login-hero">
         <QlinkLogo variant="light" size="large" />
-        <h2 className="login-title">Guardian Hub</h2>
-        <p className="login-tagline">Secure Access Required</p>
+        <h1 className="guardian-login-heading">Guardian Hub</h1>
+        <p className="guardian-login-text">Secure Access Required</p>
       </header>
-      
-      <form className="login-form" onSubmit={handleLoginSubmit}>
-        <div className="form-group">
-          <Mail className="input-icon" size={20} />
-          <input 
-            className="form-input"
-            type="email" 
+
+      <form className="guardian-login-form" onSubmit={handleSubmit}>
+        <div className="guardian-login-input-wrap">
+          <Mail size={18} className="guardian-login-input-icon" />
+          <input
+            className="guardian-login-input guardian-login-input-with-icon"
+            type="email"
             name="email"
-            placeholder="Maryamessam22@gmail.com" 
-            value={formData.email}
-            onChange={handleInputChange}
-            required 
+            placeholder="Maryamessam22@gmail.com"
+            value={loginValues.email}
+            onChange={handleChange}
+            required
           />
         </div>
-        
-        <div className="input-wrapper">
-          <Lock className="field-icon" size={20} />
-          <input 
-            className="login-input"
-            type={showPassword ? "text" : "password"} 
+
+        <div className="guardian-login-input-wrap guardian-login-password-field">
+          <Lock size={18} className="guardian-login-input-icon" />
+          <input
+            className="guardian-login-input guardian-login-input-with-icon guardian-login-password-input"
+            type={showPassword ? 'text' : 'password'}
             name="password"
-            placeholder="••••••••" 
-            value={formData.password}
-            onChange={handleInputChange}
-            required 
+            placeholder="••••••••"
+            value={loginValues.password}
+            onChange={handleChange}
+            required
           />
-          <button 
+          <button
             type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
+            className="guardian-login-eye"
+            onClick={() => setShowPassword((previous) => !previous)}
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
-        
-        <div className="forgot-password-wrap">
-          <span className="forgot-link">Forgot Password?</span>
-        </div>
-        
-        <button type="submit" className="login-submit-btn" disabled={isLoading}>
-          {isLoading ? "Signing In..." : "Sign In"}
+
+        <button
+          type="button"
+          className="guardian-login-forgot"
+          onClick={() => window.alert('Forgot password flow can be added next.')}
+        >
+          Forgot Password?
+        </button>
+
+        <button type="submit" className="guardian-login-submit">
+          Sign In
         </button>
       </form>
 
-      <div className="login-divider">
-        <div className="login-divider-line"></div>
-        <span className="login-divider-text">OR</span>
-        <div className="login-divider-line"></div>
+      <div className="guardian-login-divider">
+        <span className="guardian-login-divider-line"></span>
+        <span className="guardian-login-divider-word">OR</span>
+        <span className="guardian-login-divider-line"></span>
       </div>
 
-      <div className="social-logins">
-        <button className="social-btn"><Globe size={20} /></button>
-        <button className="social-btn"><Globe size={20} /></button>
-        <button className="social-btn"><Apple size={20} /></button>
-      </div>
-
-      <div className="emergency-section">
-        <button className="emergency-scan-btn" onClick={() => navigate('/wearer')}>
-          <AlertCircle size={20} />
-          <span>PUBLIC EMERGENCY SCAN</span>
+      <div className="guardian-login-socials">
+        <button type="button" className="guardian-login-social guardian-login-social-facebook" aria-label="Continue with Facebook">
+          <img className="guardian-login-social-icon" src={facebookIcon} alt="" />
+        </button>
+        <button type="button" className="guardian-login-social guardian-login-social-google" aria-label="Continue with Google">
+          <img className="guardian-login-social-icon" src={googleIcon} alt="" />
+        </button>
+        <button type="button" className="guardian-login-social guardian-login-social-apple" aria-label="Continue with Apple">
+          <img className="guardian-login-social-icon" src={appleIcon} alt="" />
         </button>
       </div>
 
-      <div className="login-footer">
-        New to Qlink? 
-        <span className="signup-link" onClick={() => navigate('/signup')}>
-          Create Account
-        </span>
+      <div className="guardian-login-divider guardian-login-divider-emergency">
+        <span className="guardian-login-divider-line"></span>
+        <span className="guardian-login-divider-word">EMERGENCY</span>
+        <span className="guardian-login-divider-line"></span>
       </div>
+
+      <button type="button" className="guardian-login-emergency">
+        <CircleAlert size={20} />
+        <span>PUBLIC EMERGENCY SCAN</span>
+      </button>
+
+      <footer className="guardian-login-footer">
+        New to Qlink?
+        <button type="button" className="guardian-login-link" onClick={() => navigate('/signup')}>
+          Create Account
+        </button>
+      </footer>
     </div>
   );
 };

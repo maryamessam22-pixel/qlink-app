@@ -25,7 +25,14 @@
 
   /* Gradients */
   --gradient-btn: linear-gradient(to right, #273469, #0066CC);
-  --gradient-auth-bg: linear-gradient(to bottom, #0045B5, #E80000);
+  --gradient-auth-bg: linear-gradient(
+    180deg,
+    #d80c1b 0%,
+    #a5215d 26%,
+    #654187 52%,
+    #235bb0 74%,
+    #005db8 100%
+  );
 }
 
 html {
