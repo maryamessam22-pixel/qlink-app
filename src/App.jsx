@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ChooseRole from './features/auth/ChooseRole';
 import GuardianLogin from './features/auth/GuardianLogin';
 import CreateAccount from './features/auth/CreateAccount';
+import GuardianDashboard from './features/guardian/GuardianDashboard';
 import WearerInterface from './features/wearer/WearerInterface';
 import AppLanguageContext from './components/AppLanguageContext';
 import './index.css';
@@ -36,6 +37,7 @@ const App = () => {
                   <Route path="/" element={<ChooseRole />} />
                   <Route path="/login" element={<GuardianLogin />} />
                   <Route path="/signup" element={<CreateAccount />} />
+                  <Route path="/guardian-dashboard" element={<GuardianDashboard />} />
                   <Route path="/wearer" element={<WearerInterface />} />
                 </Routes>
               </Router>
