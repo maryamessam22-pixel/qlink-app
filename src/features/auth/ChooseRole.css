@@ -167,3 +167,12 @@
   letter-spacing: 0.5px;
   opacity: 0.8;
 }
+
+.transition-fade-in {
+  animation: fadeIn 0.4s forwards ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
