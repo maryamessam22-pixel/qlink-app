@@ -1,0 +1,270 @@
+.guardian-identity-page {
+  min-height: 100vh;
+  background-color: #f8f9ff;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-primary-dark);
+  padding: 20px 20px 118px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.guardian-identity-header,
+.guardian-identity-content {
+  position: relative;
+  z-index: 1;
+}
+
+.guardian-identity-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  color: #1f2c57;
+}
+
+.guardian-identity-time {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.guardian-identity-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guardian-identity-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.guardian-identity-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guardian-identity-brand-video {
+  width: 40px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 999px;
+  display: block;
+}
+
+.guardian-identity-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.guardian-identity-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guardian-identity-icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.guardian-identity-bell {
+  overflow: visible;
+}
+
+.guardian-identity-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #ff3b4d;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.guardian-identity-cancel {
+  margin-top: 26px;
+  background: transparent;
+  color: #7b7f91;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.guardian-identity-title {
+  margin: 18px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #223160;
+}
+
+.guardian-identity-progress {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.guardian-identity-progress-bar {
+  height: 4px;
+  border-radius: 999px;
+  background: #e1e4ee;
+}
+
+.guardian-identity-progress-bar.is-active {
+  background: #304f9e;
+}
+
+.guardian-identity-step-label {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #767d96;
+}
+
+.guardian-identity-content {
+  margin-top: 18px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(39, 52, 105, 0.08);
+}
+
+.guardian-identity-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.guardian-identity-field {
+  margin-bottom: 18px;
+}
+
+.guardian-identity-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #334169;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.guardian-identity-label-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.guardian-identity-label-note {
+  font-weight: 500;
+  color: #535a76;
+}
+
+.guardian-identity-input {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #e3e5ed;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--color-primary-dark);
+  padding: 0 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+}
+
+.guardian-identity-input::placeholder {
+  color: #b3b8c9;
+}
+
+.guardian-identity-input:focus {
+  border-color: #90a7e4;
+}
+
+.guardian-identity-extra-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guardian-identity-extra-input {
+  flex: 1;
+}
+
+.guardian-identity-remove-btn {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1.5px solid #ea4a5a;
+  background: rgba(255, 255, 255, 0.88);
+  color: #ea4a5a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.guardian-identity-remove-btn:disabled {
+  opacity: 0.45;
+}
+
+.guardian-identity-add-contact {
+  width: 100%;
+  height: 46px;
+  margin-top: -2px;
+  border-radius: 12px;
+  border: 1px solid #e3e5ed;
+  background: rgba(255, 255, 255, 0.88);
+  color: #9aa1b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.guardian-identity-add-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #2f67f6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guardian-identity-submit {
+  width: 100%;
+  height: 48px;
+  margin-top: 42px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0c70db 0%, #273a8f 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(39, 58, 143, 0.22);
+}
+
+.guardian-identity-submit-arrow {
+  transform: rotate(180deg);
+}

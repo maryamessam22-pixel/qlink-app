@@ -105,7 +105,11 @@ const GuardianDashboard = () => {
           <p className="guardian-dashboard-feature-text">
             Create a medical ID for a loved one to activate their emergency QR protection immediately.
           </p>
-          <button type="button" className="guardian-dashboard-feature-btn">
+          <button
+            type="button"
+            className="guardian-dashboard-feature-btn"
+            onClick={() => navigate('/guardian-profile-identity')}
+          >
             <CirclePlus size={18} />
             <span>Add First Profile</span>
           </button>
