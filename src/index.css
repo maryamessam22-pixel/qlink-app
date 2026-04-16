@@ -1,4 +1,7 @@
 :root {
+  /* Phone frame (matches .mobile-app-wrapper / body column) */
+  --app-max-width: 412px;
+
   /* Typography */
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Century Gothic', sans-serif;
@@ -22,23 +25,47 @@
 
   /* Gradients */
   --gradient-btn: linear-gradient(to right, #273469, #0066CC);
-  --gradient-auth-bg: linear-gradient(180deg, #CE2222 0%, #3D5099 45%, #0066CC 100%);
+  --gradient-auth-bg: linear-gradient(to bottom, #0045B5, #E80000);
+}
+
+html {
+  height: 100%;
+  background-color: #e4e6eb;
 }
 
 body {
-  font-family: var(--font-primary);
-  margin: 0;
+  width: min(100vw, var(--app-max-width));
+  max-width: 100%;
+  min-height: 100dvh;
+  margin: 0 auto;
   padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
   background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
 }
 
 body[dir='rtl'] {
   font-family: var(--font-arabic);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-secondary);
 }
 
@@ -51,17 +78,42 @@ body[dir='rtl'] h6 {
   font-family: var(--font-arabic);
 }
 
-/* Mobile Simulation Wrapper */
+/* App shell: always at least one viewport tall (fixes bottom white gap in devtools device mode) */
 .mobile-app-wrapper {
-  width: min(100vw, 412px);
-  height: min(100dvh, 915px);
-  min-height: 915px;
-  margin: 0 auto;
+  flex: 1;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
   background-color: var(--color-white);
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Fills space under the fixed language control so each route can stretch to the bottom */
+.app-main-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.app-route-host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+/* React Router v6: single matched route element becomes a direct child here */
+.app-route-host > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 button {

@@ -18,26 +18,26 @@ const GuardianLogin = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // simulated authentication delay
+    // brief timeout to simulate loading
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/guardian/dashboard');
+      navigate('/guardian-dashboard');
     }, 1500);
   };
 
   return (
-    <div className="qlink-auth-gate-wrapper">
-      <header className="auth-header-identity">
+    <div className="login-screen">
+      <header className="login-header">
         <QlinkLogo variant="light" size="large" />
-        <h2 className="auth-hub-title">Guardian Hub</h2>
-        <p className="auth-hub-tagline">Secure Access Required</p>
+        <h2 className="login-title">Guardian Hub</h2>
+        <p className="login-tagline">Secure Access Required</p>
       </header>
       
-      <form className="auth-form-nucleus" onSubmit={handleLoginSubmit}>
-        <div className="auth-field-entry">
-          <Mail className="auth-field-icon" size={20} />
+      <form className="login-form" onSubmit={handleLoginSubmit}>
+        <div className="form-group">
+          <Mail className="input-icon" size={20} />
           <input 
-            className="auth-standard-input"
+            className="form-input"
             type="email" 
             name="email"
             placeholder="Maryamessam22@gmail.com" 
@@ -47,10 +47,10 @@ const GuardianLogin = () => {
           />
         </div>
         
-        <div className="auth-field-entry">
-          <Lock className="auth-field-icon" size={20} />
+        <div className="input-wrapper">
+          <Lock className="field-icon" size={20} />
           <input 
-            className="auth-standard-input"
+            className="login-input"
             type={showPassword ? "text" : "password"} 
             name="password"
             placeholder="••••••••" 
@@ -60,47 +60,47 @@ const GuardianLogin = () => {
           />
           <button 
             type="button"
-            className="auth-field-toggle"
+            className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
         
-        <div className="auth-auxiliary-links">
-          <span className="auth-aux-link">Forgot Password?</span>
+        <div className="forgot-password-wrap">
+          <span className="forgot-link">Forgot Password?</span>
         </div>
         
-        <button type="submit" className="auth-primary-action-btn" disabled={isLoading}>
+        <button type="submit" className="login-submit-btn" disabled={isLoading}>
           {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
 
-      <div className="auth-divider-stack">
-        <div className="auth-divider-line"></div>
-        <span className="auth-divider-text">OR</span>
-        <div className="auth-divider-line"></div>
+      <div className="login-divider">
+        <div className="login-divider-line"></div>
+        <span className="login-divider-text">OR</span>
+        <div className="login-divider-line"></div>
       </div>
 
-      <div className="auth-social-nexus">
-        <button className="auth-social-btn"><Globe size={20} /></button>
-        <button className="auth-social-btn"><Globe size={20} /></button>
-        <button className="auth-social-btn"><Apple size={20} /></button>
+      <div className="social-logins">
+        <button className="social-btn"><Globe size={20} /></button>
+        <button className="social-btn"><Globe size={20} /></button>
+        <button className="social-btn"><Apple size={20} /></button>
       </div>
 
-      <div className="auth-emergency-sector">
-        <button className="auth-emergency-btn" onClick={() => navigate('/wearer')}>
+      <div className="emergency-section">
+        <button className="emergency-scan-btn" onClick={() => navigate('/wearer')}>
           <AlertCircle size={20} />
           <span>PUBLIC EMERGENCY SCAN</span>
         </button>
       </div>
 
-      <footer className="auth-footer-nexus">
+      <div className="login-footer">
         New to Qlink? 
-        <span className="auth-footer-trigger" onClick={() => navigate('/signup')}>
+        <span className="signup-link" onClick={() => navigate('/signup')}>
           Create Account
         </span>
-      </footer>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ const CreateAccount = () => {
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState('guardian'); // Default
+  const [isCreatingHub, setIsCreatingHub] = useState(false);
   const [formData, setFormData] = useState({ fullName: '', email: '', password: '' });
 
   useEffect(() => {
@@ -24,12 +25,17 @@ const CreateAccount = () => {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    // Navigate based on role for demo purposes
-    if (role === 'guardian') {
-      navigate('/guardian/dashboard');
-    } else {
+
+    if (role !== 'guardian') {
       navigate('/wearer');
+      return;
     }
+
+    setIsCreatingHub(true);
+    // Simulated network request (UX requirement)
+    setTimeout(() => {
+      navigate('/guardian-dashboard');
+    }, 1500);
   };
 
   return (
@@ -112,15 +118,28 @@ const CreateAccount = () => {
           </div>
         </div>
         
-        <button type="submit" className="create-account-submit">
-          {role === 'guardian' ? 'Create a Guardian Hub' : 'Create Wearer Profile'}
+        <button
+          type="submit"
+          className="create-account-submit"
+          disabled={isCreatingHub}
+        >
+          {isCreatingHub ? (
+            <>
+              <span className="create-account-loading-spinner" />
+              Creating Hub...
+            </>
+          ) : role === 'guardian' ? (
+            'Create a Guardian Hub'
+          ) : (
+            'Create Wearer Profile'
+          )}
         </button>
       </form>
 
-      <div className="auth-divider">
-        <div className="auth-divider-line"></div>
-        <span className="auth-divider-text">OR</span>
-        <div className="auth-divider-line"></div>
+      <div className="signup-divider">
+        <div className="signup-divider-line"></div>
+        <span className="signup-divider-text">OR</span>
+        <div className="signup-divider-line"></div>
       </div>
 
       <div className="social-login-buttons">
@@ -129,9 +148,9 @@ const CreateAccount = () => {
         <button className="social-button social-apple" type="button"></button>
       </div>
 
-      <footer className="auth-footer">
+      <footer className="signup-footer">
         Already have an account? 
-        <span className="auth-link" onClick={() => navigate('/login')}>
+        <span className="login-link" onClick={() => navigate('/login')}>
           <strong> Sign In</strong>
         </span>
       </footer>

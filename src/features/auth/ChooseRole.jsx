@@ -6,44 +6,19 @@ import './ChooseRole.css';
 
 const ChooseRole = () => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Entrance animation trigger
     const visTimer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(visTimer);
   }, []);
 
   const handleRoleSelection = (role) => {
-    setIsLoading(true);
-    // Simulate brief processing before transition
-    setTimeout(() => {
-      navigate('/signup', { state: { role } });
-    }, 2000);
+    navigate('/signup', { state: { role } });
   };
 
   return (
-    <>
-      {/* ── Premium Loading Screen (triggers on click) ──────────────────────── */}
-      {isLoading && (
-        <div className="choose-role-loading-overlay transition-fade-in">
-          <div className="choose-role-loader-content">
-            <QlinkLogo variant="light" size="large" />
-            <p className="choose-role-loader-tagline">Smart Safety <br /> Ecosystem</p>
-            
-            <div className="choose-role-loader-wrap">
-              <div className="choose-role-spinner"></div>
-            </div>
-          </div>
-          
-          {/* Decorative blurred blobs for that mesh vibe */}
-          <div className="role-loader-blob blob-1"></div>
-          <div className="role-loader-blob blob-2"></div>
-        </div>
-      )}
-
-      {/* ── Main Choose Role Screen ─────────────────────────────────── */}
+    <div className="choose-role-root">
       <div className={`choose-role-screen ${isVisible ? 'content-visible' : 'content-hidden'}`}>
         <header className="role-header">
           <QlinkLogo variant="light" size="large" />
@@ -52,7 +27,7 @@ const ChooseRole = () => {
         </header>
 
         <div className="role-list">
-          {/* Guardian card */}
+          {/* guardian section */}
           <div className="role-card card-slide-up" style={{ animationDelay: '0.1s' }}>
             <div className="role-icon-box">
               <Shield size={32} color="var(--color-primary)" />
@@ -69,8 +44,8 @@ const ChooseRole = () => {
             </button>
           </div>
 
-          {/* Wearer card */}
-          <div className="role-card card-slide-up" style={{ animationDelay: '0.2s' }}>
+          {/* wearer section */}
+          <div className="role-card card-slide-up" style={{ animationDelay: '0.25s' }}>
             <div className="role-icon-box wearer-icon-box">
               <User size={32} color="#7f39fb" />
             </div>
@@ -87,7 +62,7 @@ const ChooseRole = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

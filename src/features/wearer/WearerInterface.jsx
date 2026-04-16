@@ -1,13 +1,40 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QrCode, AlertCircle, Home, Settings } from 'lucide-react';
+import BottomNav from '../../components/BottomNav';
 import './WearerInterface.css';
 
 const WearerInterface = () => {
   const navigate = useNavigate();
 
+  const handleTabChange = (tabId) => {
+    if (tabId === 'home') {
+      navigate('/guardian-dashboard');
+      return;
+    }
+
+    if (tabId === 'vault') {
+      navigate('/wearer');
+      return;
+    }
+
+    if (tabId === 'settings') {
+      alert('Settings screen coming soon.');
+      return;
+    }
+
+    if (tabId === 'map') {
+      alert('Map screen coming soon.');
+      return;
+    }
+
+    if (tabId === 'add') {
+      alert('Quick action coming soon.');
+    }
+  };
+
   return (
-    <div className="qlink-wearer-nexus">
+    <div className="wearer-container">
       <div className="qlink-wearer-top-bar">
         <button className="qlink-nav-circular-btn" onClick={() => navigate('/')}>
           <Home size={20} />
@@ -30,7 +57,7 @@ const WearerInterface = () => {
         </div>
       </div>
 
-      <div className="qlink-sos-nexus">
+      <div className="sos-action-area">
         <div className="qlink-sos-trigger-ring">
           <div className="qlink-sos-ripple"></div>
           <div className="qlink-sos-ripple"></div>
@@ -41,6 +68,8 @@ const WearerInterface = () => {
         </div>
         <p className="qlink-wearer-footer">Tap and hold for 3 seconds to cancel alert</p>
       </div>
+
+      <BottomNav activeTab="vault" onTabChange={handleTabChange} />
     </div>
   );
 };

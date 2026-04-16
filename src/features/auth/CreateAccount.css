@@ -1,12 +1,13 @@
 .create-account-screen {
   width: 100%;
-  min-height: 100%;
-  padding: 32px 24px 34px;
+  min-height: 100dvh;
+  padding: 56px 24px 34px;
   box-sizing: border-box;
   color: #ffffff;
-  background: var(--gradient-auth-bg);
+  background: linear-gradient(180deg, #d40418 0%, #0058bf 72%, #00408e 100%);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
 }
 
@@ -20,11 +21,12 @@
   font-size: 14px;
   font-weight: 500;
   padding: 0;
+  margin-bottom: 8px;
 }
 
 .create-account-header {
   text-align: center;
-  margin-top: 24px;
+  margin-top: 0;
   margin-bottom: 24px;
 }
 
@@ -125,22 +127,49 @@
   font-weight: 700;
   background: linear-gradient(90deg, #163f95 0%, #253d84 100%);
   box-shadow: 0 6px 12px rgba(7, 31, 97, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.auth-divider {
+.create-account-submit:disabled {
+  opacity: 0.78;
+  cursor: not-allowed;
+}
+
+.create-account-loading-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.95);
+  animation: qlink-account-spin 0.9s linear infinite;
+}
+
+@keyframes qlink-account-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-divider {
   margin: 28px 0 18px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.auth-divider-line {
+.signup-divider-line {
   flex: 1;
   height: 1px;
   background: rgba(255, 255, 255, 0.5);
 }
 
-.auth-divider-text {
+.signup-divider-text {
   font-size: 15px;
   opacity: 0.9;
 }
@@ -178,12 +207,12 @@
   border: 1px solid #ffffff;
 }
 
-.auth-footer {
+.signup-footer {
   text-align: center;
   font-size: 16px;
 }
 
-.auth-link {
+.login-link {
   margin-left: 6px;
   cursor: pointer;
 }

@@ -1,0 +1,132 @@
+.mobile-top-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-top-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-slate);
+}
+
+.mobile-top-time {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.mobile-top-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-top-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-top-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-top-app-icon {
+  width: 34px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.mobile-top-app-icon-video {
+  border-radius: 999px;
+}
+
+.mobile-top-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.mobile-top-lang-switch {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(39, 52, 105, 0.16);
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobile-top-lang-separator {
+  opacity: 0.45;
+}
+
+.mobile-top-lang-on {
+  color: var(--color-primary-dark);
+  opacity: 1;
+}
+
+.mobile-top-lang-off {
+  color: var(--color-slate);
+  opacity: 0.6;
+}
+
+.mobile-top-action-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-top-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mobile-top-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  right: 2px;
+  top: 2px;
+  background: #ef4444;
+}
+
+.mobile-top-back-btn {
+  margin-top: 2px;
+  align-self: flex-start;
+  background: transparent;
+  color: var(--color-slate);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.mobile-top-title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 22px;
+}
+
+.mobile-top-subtitle {
+  margin: 0;
+  color: var(--color-slate);
+  opacity: 0.78;
+  font-size: 14px;
+}
