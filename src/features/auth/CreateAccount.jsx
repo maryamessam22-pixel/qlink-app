@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { User, Mail, Lock, Eye, EyeOff, Globe, Apple, ArrowLeft } from 'lucide-react';
+import { User, Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import QlinkLogo from '../../components/QlinkLogo';
 import './CreateAccount.css';
 
@@ -33,103 +33,105 @@ const CreateAccount = () => {
   };
 
   return (
-    <div className="qlink-create-account-screen">
-      <button className="back-navigation-btn" onClick={() => navigate(-1)}>
+    <div className="create-account-screen">
+      <button className="back-button" onClick={() => navigate(-1)}>
         <ArrowLeft size={18} />
         <span>Back</span>
       </button>
 
-      <header className="auth-identity-stack">
+      <header className="create-account-header">
         <QlinkLogo variant="light" size="large" />
-        <h2 className="auth-title-large">Create Account</h2>
-        <p className="auth-subtitle-soft">Starts your safety journey</p>
+        <h2 className="create-account-title">Create Account</h2>
+        <p className="create-account-subtitle">Starts your safety journey</p>
       </header>
 
-      <form className="auth-form-nucleus" onSubmit={handleSignupSubmit}>
-        <div className="auth-entry-field">
-          <User className="field-icon-lead" size={20} />
+      <form className="create-account-form" onSubmit={handleSignupSubmit}>
+        <div className="form-field">
+          <User className="field-icon" size={20} />
           <input 
-            className="auth-premium-input"
+            className="text-input"
             type="text" 
             name="fullName"
-            placeholder="Full Name" 
+            placeholder="Mariam Essam" 
             value={formData.fullName}
             onChange={handleInputChange}
             required 
           />
         </div>
 
-        <div className="auth-entry-field">
-          <Mail className="field-icon-lead" size={20} />
+        <div className="form-field">
+          <Mail className="field-icon" size={20} />
           <input 
-            className="auth-premium-input"
+            className="text-input"
             type="email" 
             name="email"
-            placeholder="Email Address" 
+            placeholder="maryamessam@gmail.com" 
             value={formData.email}
             onChange={handleInputChange}
             required 
           />
         </div>
         
-        <div className="auth-entry-field">
-          <Lock className="field-icon-lead" size={20} />
+        <div className="form-field">
+          <Lock className="field-icon" size={20} />
           <input 
-            className="auth-premium-input"
+            className="text-input"
             type={showPassword ? "text" : "password"} 
             name="password"
-            placeholder="Password" 
+            placeholder="**********" 
             value={formData.password}
             onChange={handleInputChange}
             required 
           />
           <button 
             type="button"
-            className="eye-visibility-toggle"
+            className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
         </div>
 
-        {/* Role Toggle Switch */}
-        <div className="role-segmented-controller">
+        <div className="interface-select">
+          <p className="interface-select-label">Choose interface</p>
+          <div className="role-toggle">
           <button 
             type="button"
-            className={`segment-btn ${role === 'guardian' ? 'active' : ''}`}
+            className={`role-toggle-button ${role === 'guardian' ? 'active' : ''}`}
             onClick={() => setRole('guardian')}
           >
             Guardian
           </button>
           <button 
             type="button"
-            className={`segment-btn ${role === 'wearer' ? 'active' : ''}`}
+            className={`role-toggle-button ${role === 'wearer' ? 'active' : ''}`}
             onClick={() => setRole('wearer')}
           >
             Wearer
           </button>
+          </div>
         </div>
         
-        <button type="submit" className="auth-submit-action-btn">
+        <button type="submit" className="create-account-submit">
           {role === 'guardian' ? 'Create a Guardian Hub' : 'Create Wearer Profile'}
         </button>
       </form>
 
-      <div className="auth-divider-stack">
+      <div className="auth-divider">
         <div className="auth-divider-line"></div>
         <span className="auth-divider-text">OR</span>
         <div className="auth-divider-line"></div>
       </div>
 
-      <div className="auth-social-nexus">
-        <button className="social-action-btn"><Globe size={20} /></button>
-        <button className="social-action-btn"><Globe size={20} /></button>
-        <button className="social-action-btn"><Apple size={20} /></button>
+      <div className="social-login-buttons">
+        <button className="social-button social-facebook" type="button">f</button>
+        <button className="social-button social-google" type="button">G</button>
+        <button className="social-button social-apple" type="button"></button>
       </div>
 
-      <footer className="auth-footer-gate">
+      <footer className="auth-footer">
         Already have an account? 
-        <span className="auth-footer-trigger" onClick={() => navigate('/login')}>
+        <span className="auth-link" onClick={() => navigate('/login')}>
           <strong> Sign In</strong>
         </span>
       </footer>

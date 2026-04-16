@@ -53,10 +53,12 @@ body[dir='rtl'] h6 {
 
 /* Mobile Simulation Wrapper */
 .mobile-app-wrapper {
-  max-width: 412px;
-  height: 100vh;
+  width: min(100vw, 412px);
+  height: min(100dvh, 915px);
+  min-height: 915px;
   margin: 0 auto;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   background-color: var(--color-white);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);

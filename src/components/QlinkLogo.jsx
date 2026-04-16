@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logos/qlink_logo.png';
 
 const QlinkLogo = ({ variant = 'dark', size = 'medium' }) => {
   const width = size === 'large' ? '180px' : size === 'medium' ? '120px' : '80px';

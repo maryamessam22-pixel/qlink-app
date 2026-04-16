@@ -23,23 +23,24 @@ const App = () => {
     setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));
   };
 
-  if (showSplash) {
-    return <SplashScreen onLoadingComplete={() => setShowSplash(false)} />;
-  }
-
   return (
     <div className="mobile-app-wrapper">
-      <LanguageSwitcher currentLang={language} onToggle={toggleLanguage} />
-
-      <Router>
-        <Routes>
-          <Route path="/" element={<ChooseRole />} />
-          <Route path="/login" element={<GuardianLogin />} />
-          <Route path="/signup" element={<CreateAccount />} />
-          <Route path="/guardian/dashboard" element={<GuardianDashboard />} />
-          <Route path="/wearer" element={<WearerInterface />} />
-        </Routes>
-      </Router>
+      {showSplash ? (
+        <SplashScreen onLoadingComplete={() => setShowSplash(false)} />
+      ) : (
+        <>
+          <LanguageSwitcher currentLang={language} onToggle={toggleLanguage} />
+          <Router>
+            <Routes>
+              <Route path="/" element={<ChooseRole />} />
+              <Route path="/login" element={<GuardianLogin />} />
+              <Route path="/signup" element={<CreateAccount />} />
+              <Route path="/guardian/dashboard" element={<GuardianDashboard />} />
+              <Route path="/wearer" element={<WearerInterface />} />
+            </Routes>
+          </Router>
+        </>
+      )}
     </div>
   );
 };
